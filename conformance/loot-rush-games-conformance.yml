@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/loot-rush-games-partner-openapi.json
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: OpenAPI document declares openapi 3.1.0
+- id: json-rpc-2.0
+  conforms: true
+  evidence: MCP endpoint (POST /mcp) uses JSON-RPC 2.0 request/response envelope
+- id: mcp
+  conforms: true
+  evidence: Official hosted Model Context Protocol server at https://mcp.lootrush.com/mcp (Streamable HTTP)
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme; auth is http bearer + apiKey (x-api-key)
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a flat { error } object, not application/problem+json
+- id: rfc8594-sunset
+  conforms: false
+  evidence: No Sunset/Deprecation header policy documented
+- id: bearer-token-auth
+  conforms: true
+  evidence: http bearer securityScheme applied to Withdraw, History and MCP operations

@@ -1,0 +1,55 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/loot-rush-games-partner-openapi.json
+format: json-object
+envelope:
+  description: >-
+    REST endpoints return a flat JSON object with a single `error` string field
+    describing what went wrong. The MCP endpoint (POST /mcp) instead returns a
+    JSON-RPC 2.0 error object ({ jsonrpc, id, error: { code, message } }).
+  rest_shape: '{ "error": "<message>" }'
+  jsonrpc_shape: '{ "jsonrpc": "2.0", "id": <int|null>, "error": { "code": <int>, "message": "<string>" } }'
+problems:
+- status: 400
+  title: Bad request
+  description: Invalid resource/feature combination or query params.
+  source_operation: openapi/loot-rush-games-partner-openapi.json#getUserHistory
+- status: 401
+  title: Unauthorized
+  description: Missing or invalid bearer token / API key.
+  source_operations:
+  - openapi/loot-rush-games-partner-openapi.json#createWithdrawal
+  - openapi/loot-rush-games-partner-openapi.json#listWithdrawals
+  - openapi/loot-rush-games-partner-openapi.json#getUserHistory
+  - openapi/loot-rush-games-partner-openapi.json#getConsentUser
+  - openapi/loot-rush-games-partner-openapi.json#callMcpTool
+- status: 403
+  title: Forbidden
+  description: >-
+    Authenticated but not permitted (e.g. missing required scope such as `mcp` or
+    `mcp_card_reveal`, or consent not granted for the requested data).
+  source_operations:
+  - openapi/loot-rush-games-partner-openapi.json#createWithdrawal
+  - openapi/loot-rush-games-partner-openapi.json#getConsentUser
+  - openapi/loot-rush-games-partner-openapi.json#callMcpTool
+- status: 404
+  title: Not found
+  description: The referenced user, withdrawal, or consent does not exist.
+  source_operations:
+  - openapi/loot-rush-games-partner-openapi.json#createWithdrawal
+  - openapi/loot-rush-games-partner-openapi.json#listWithdrawals
+  - openapi/loot-rush-games-partner-openapi.json#getConsentUser
+- status: 410
+  title: Gone
+  description: The consent has been revoked or expired and its data is no longer available.
+  source_operation: openapi/loot-rush-games-partner-openapi.json#getConsentUser
+- status: 429
+  title: Too many requests
+  description: Rate limit exceeded (History is limited to 2 requests every 2 seconds per user).
+  source_operations:
+  - openapi/loot-rush-games-partner-openapi.json#getUserHistory
+  - openapi/loot-rush-games-partner-openapi.json#callMcpTool
+jsonrpc_error_codes:
+- code: -32001
+  message: Unauthorized
+  note: Example JSON-RPC error code from the MCP endpoint (openapi JsonRpcError schema).

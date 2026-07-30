@@ -1,0 +1,27 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for LootRush Partner API
+  version: 1.0.0
+extends: openapi/loot-rush-games-partner-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-20'
+    x-apievangelist-mcp-server: https://mcp.lootrush.com/mcp
+    x-apievangelist-status-page: https://status.lootrush.com/
+    x-apievangelist-tags:
+    - cryptocurrency
+    - withdrawals
+    - history
+    - consent
+    - mcp
+- target: $.paths['/mcp']['post']
+  update:
+    x-apievangelist-note: >-
+      Official read-only MCP tools: getAccountBalance, getAccountHistory,
+      getUserCards, getUserCardTransactions, getCardRevealPublicKey. Requires the
+      `mcp` scope (and `mcp_card_reveal` for card secret reveal).
+- target: $.paths['/api/v1/consent/{consentId}/user']['get']
+  update:
+    x-apievangelist-note: >-
+      Consent-gated data access; HTTP 410 Gone when the consent is revoked or expired.

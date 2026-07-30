@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source:
+- https://docs.lootrush.com/
+- https://status.lootrush.com/
+- openapi/loot-rush-games-partner-openapi.json
+versioning:
+  scheme: mixed (path-versioned consent + unversioned core)
+  current: v1
+  spec_version: 1.0.0
+  docs: https://docs.lootrush.com/
+  note: >-
+    Consent endpoints carry `/api/v1/` in the path; Withdraw, History and MCP
+    endpoints are unversioned. OpenAPI info.version is 1.0.0.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No deprecation policy or RFC 8594 Sunset/Deprecation header support was found in the docs.
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.lootrush.com/
+status_page_engine: Uptime Kuma
+deprecated_operations: []

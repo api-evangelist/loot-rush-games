@@ -1,0 +1,16 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/loot-rush-games-partner-openapi.json
+skills:
+- file: loot-rush-games-create-and-track-withdrawal.md
+  name: Create and track a LootRush crypto withdrawal
+  api: openapi/loot-rush-games-partner-openapi.json
+  operations: [createWithdrawal, listWithdrawals]
+- file: loot-rush-games-read-account-via-mcp.md
+  name: Read a LootRush account read-only via MCP
+  api: openapi/loot-rush-games-partner-openapi.json
+  operations: [callMcpTool]
+- file: loot-rush-games-query-user-history.md
+  name: Query LootRush user transaction history
+  api: openapi/loot-rush-games-partner-openapi.json
+  operations: [getUserHistory]

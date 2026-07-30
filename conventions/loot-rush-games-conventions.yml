@@ -1,0 +1,59 @@
+generated: '2026-07-20'
+method: derived
+source:
+- openapi/loot-rush-games-partner-openapi.json
+- https://docs.lootrush.com/
+authentication:
+  styles:
+  - name: bearer
+    applies_to: [Withdraw, History, MCP]
+    header: 'Authorization: Bearer <token>'
+    issued_by: LootRush account API key (Settings -> API Key) or account manager
+  - name: api-key
+    applies_to: [Connect]
+    header: x-api-key
+    issued_by: Integration API key from LootRush during Connect registration
+  scopes:
+    note: >-
+      The MCP surface enforces key scopes (`mcp`, and `mcp_card_reveal` for card
+      secret reveal). These are API-key scopes, not OAuth2 scopes; the OpenAPI
+      declares no oauth2 security scheme.
+  see_also: authentication/loot-rush-games-authentication.yml
+idempotency:
+  supported: false
+  note: >-
+    No idempotency key/header is documented in the OpenAPI or developer docs.
+    Withdrawals are created as queued transactions processed asynchronously; an
+    optional client-supplied `externalId` field can be used for reconciliation but
+    is not documented as an idempotency guarantee.
+pagination:
+  supported: true
+  style: filter-based / paginated list
+  operation: listWithdrawals (GET /api/crypto/{userId}/withdraws)
+  note: >-
+    List withdrawals returns a paginated list with optional filters. Exact page
+    parameter names are not enumerated in the spec summary.
+consent:
+  model: OAuth-style, consent-based
+  operation: getConsentUser (GET /api/v1/consent/{consentId}/user)
+  note: >-
+    Connect data access is gated by a granted consent identified by consentId;
+    revoked/expired consents return HTTP 410 Gone.
+rate_limiting:
+  documented: true
+  known_limits:
+  - surface: History API
+    limit: 2 requests / 2 seconds per user
+    signal: HTTP 429 on exceed
+  - surface: MCP endpoint
+    signal: HTTP 429 on exceed
+versioning:
+  scheme: mixed
+  note: >-
+    Consent endpoints are versioned in the path (`/api/v1/consent/...`); Withdraw,
+    History and MCP endpoints are unversioned. OpenAPI info.version is 1.0.0.
+  see_also: lifecycle/loot-rush-games-lifecycle.yml
+error_envelope:
+  rest: '{ "error": "<message>" }'
+  jsonrpc: '{ "jsonrpc": "2.0", "id": <int|null>, "error": { "code": <int>, "message": <string> } }'
+  see_also: errors/loot-rush-games-problem-types.yml

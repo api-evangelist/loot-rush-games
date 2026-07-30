@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://docs.lootrush.com/mcp-server
+server:
+  name: lootrush
+  transport: http          # Streamable HTTP, JSON-RPC 2.0, stateless (POST only)
+  url: https://mcp.lootrush.com/mcp
+  authentication:
+    scheme: bearer
+    header: 'Authorization: Bearer <API_KEY>'
+    alt_query_param: token
+    required_scope: mcp
+    extra_scopes:
+    - name: mcp_card_reveal
+      purpose: Required to reveal encrypted card number and CVV via getUserCards
+  read_only: true
+  scope_note: All tools are read-only and scoped to the authenticated user's own data.
+install:
+  claude_code: >-
+    claude mcp add --transport http lootrush https://mcp.lootrush.com/mcp
+    --header "Authorization: Bearer YOUR_API_KEY"
+  json_config:
+    mcpServers:
+      lootrush:
+        url: https://mcp.lootrush.com/mcp
+        headers:
+          Authorization: Bearer YOUR_API_KEY
+tools:
+- name: getAccountBalance
+  description: Returns total USD portfolio value with per-token / per-network breakdown.
+- name: getAccountHistory
+  description: >-
+    Retrieves account transactions (deposits, withdrawals, converts, sends, card
+    operations) by date range or specific transaction ID.
+- name: getUserCards
+  description: >-
+    Lists the user's cards across issuers with balances; optionally reveals the
+    encrypted card number and CVV (requires the mcp_card_reveal scope).
+- name: getUserCardTransactions
+  description: >-
+    Fetches card transactions, filterable by card, date range, status, or
+    polarity.
+- name: getCardRevealPublicKey
+  description: Returns the public key used to decrypt revealed card secrets.
+source_operation: openapi/loot-rush-games-partner-openapi.json#callMcpTool

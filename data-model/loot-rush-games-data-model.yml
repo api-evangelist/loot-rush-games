@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/loot-rush-games-partner-openapi.json
+entities:
+- name: User
+  note: Implied by userId path parameter and consent user data; not a defined schema.
+  identified_by: userId
+- name: Withdrawal
+  schema: Withdrawal
+  identified_by: id
+  fields:
+  - id
+  - bulkId (uuid)
+  - status
+  - amountToPayToken
+  - outCurrencyIsoCode
+  - toAddress
+  - externalId (nullable)
+  - transactionHash
+- name: Consent
+  note: OAuth-style consent granting third-party access to a user's data.
+  identified_by: consentId
+- name: Card
+  note: >-
+    Surfaced via the MCP tools (getUserCards / getUserCardTransactions); not
+    modeled as an OpenAPI schema in the REST surface.
+- name: HistoryEntry
+  note: Transaction/activity history rows returned by getUserHistory; selected via resource + feature.
+relationships:
+- from: Withdrawal
+  to: User
+  type: belongs_to
+  via: userId
+- from: Withdrawal
+  to: Withdrawal
+  type: belongs_to
+  via: bulkId
+  note: Multiple withdrawal entries can share a bulk payment id.
+- from: Consent
+  to: User
+  type: belongs_to
+  via: userId
+- from: Card
+  to: User
+  type: belongs_to
+- from: HistoryEntry
+  to: User
+  type: belongs_to
