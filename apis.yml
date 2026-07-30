@@ -1,7 +1,16 @@
 aid: loot-rush-games
 name: Loot Rush Games
-description: Loot Rush Games is a company surfaced as a portfolio company of a16z and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  LootRush (Loot Rush Games) is a San Francisco company, backed by a16z, Paradigm
+  and Y Combinator, that operates a crypto-native "global operating account" —
+  wallets, cards, cryptocurrency withdrawals and transaction history for gamers
+  and marketplaces. It began as a Steam-like platform for blockchain games with
+  NFT rentals and has grown into a consumer crypto account and card product. For
+  developers, LootRush publishes a Partner API (OpenAPI 3.1) exposing Withdraw,
+  History and Connect (OAuth-style, consent-based user data) APIs, plus an
+  official hosted, read-only Model Context Protocol (MCP) server that gives AI
+  assistants scoped access to a user's own balances, cards, card transactions and
+  account history.
 url: https://raw.githubusercontent.com/api-evangelist/loot-rush-games/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,14 +18,183 @@ x-backed-by:
 - a16z
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+image: https://www.lootrush.com/favicon.ico
 tags:
 - Company
-apis: []
+- Cryptocurrency
+- Blockchain
+- Gaming
+- Fintech
+- Wallets
+- Cards
+- Payments
+- Withdrawals
+- MCP
+- Agent-Ready
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v1
+apis:
+- aid: loot-rush-games:loot-rush-games-connect-api
+  name: Loot Rush Games Connect API
+  description: The Connect API from Loot Rush Games — 1 operation(s) for connect.
+  humanURL: https://docs.lootrush.com/
+  baseURL: https://third-party.lootrush.com
+  tags:
+  - Connect
+  properties:
+  - type: OpenAPI
+    url: openapi/loot-rush-games-connect-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lootrush.com/
+  - type: APIReference
+    url: https://docs.lootrush.com/api-reference/openapi.json
+  - type: Authentication
+    url: authentication/loot-rush-games-authentication.yml
+  - type: ErrorCatalog
+    url: errors/loot-rush-games-problem-types.yml
+  - type: Conventions
+    url: conventions/loot-rush-games-conventions.yml
+  - type: Conformance
+    url: conformance/loot-rush-games-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/loot-rush-games-lifecycle.yml
+  - type: DataModel
+    url: data-model/loot-rush-games-data-model.yml
+- aid: loot-rush-games:loot-rush-games-history-api
+  name: Loot Rush Games History API
+  description: The History API from Loot Rush Games — 1 operation(s) for history.
+  humanURL: https://docs.lootrush.com/
+  baseURL: https://third-party.lootrush.com
+  tags:
+  - History
+  properties:
+  - type: OpenAPI
+    url: openapi/loot-rush-games-history-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lootrush.com/
+  - type: APIReference
+    url: https://docs.lootrush.com/api-reference/openapi.json
+  - type: Authentication
+    url: authentication/loot-rush-games-authentication.yml
+  - type: ErrorCatalog
+    url: errors/loot-rush-games-problem-types.yml
+  - type: Conventions
+    url: conventions/loot-rush-games-conventions.yml
+  - type: Conformance
+    url: conformance/loot-rush-games-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/loot-rush-games-lifecycle.yml
+  - type: DataModel
+    url: data-model/loot-rush-games-data-model.yml
+- aid: loot-rush-games:loot-rush-games-mcp-api
+  name: Loot Rush Games MCP API
+  description: The MCP API from Loot Rush Games — 1 operation(s) for mcp.
+  humanURL: https://docs.lootrush.com/
+  baseURL: https://third-party.lootrush.com
+  tags:
+  - MCP
+  properties:
+  - type: OpenAPI
+    url: openapi/loot-rush-games-mcp-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lootrush.com/
+  - type: APIReference
+    url: https://docs.lootrush.com/api-reference/openapi.json
+  - type: Authentication
+    url: authentication/loot-rush-games-authentication.yml
+  - type: ErrorCatalog
+    url: errors/loot-rush-games-problem-types.yml
+  - type: Conventions
+    url: conventions/loot-rush-games-conventions.yml
+  - type: Conformance
+    url: conformance/loot-rush-games-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/loot-rush-games-lifecycle.yml
+  - type: DataModel
+    url: data-model/loot-rush-games-data-model.yml
+- aid: loot-rush-games:loot-rush-games-withdrawals-api
+  name: Loot Rush Games Withdrawals API
+  description: The Withdrawals API from Loot Rush Games — 2 operation(s) for withdrawals.
+  humanURL: https://docs.lootrush.com/
+  baseURL: https://third-party.lootrush.com
+  tags:
+  - Withdrawals
+  properties:
+  - type: OpenAPI
+    url: openapi/loot-rush-games-withdrawals-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lootrush.com/
+  - type: APIReference
+    url: https://docs.lootrush.com/api-reference/openapi.json
+  - type: Authentication
+    url: authentication/loot-rush-games-authentication.yml
+  - type: ErrorCatalog
+    url: errors/loot-rush-games-problem-types.yml
+  - type: Conventions
+    url: conventions/loot-rush-games-conventions.yml
+  - type: Conformance
+    url: conformance/loot-rush-games-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/loot-rush-games-lifecycle.yml
+  - type: DataModel
+    url: data-model/loot-rush-games-data-model.yml
+common:
+- type: DeveloperPortal
+  url: https://docs.lootrush.com/
+- type: Documentation
+  url: https://docs.lootrush.com/
+- type: APIReference
+  url: https://docs.lootrush.com/api-reference/openapi.json
+- type: GettingStarted
+  url: https://docs.lootrush.com/
+- type: LLMsTxt
+  url: llms/loot-rush-games-llms.txt
+- type: MCPServer
+  url: mcp/loot-rush-games-mcp.yml
+- type: Authentication
+  url: authentication/loot-rush-games-authentication.yml
+- type: ErrorCatalog
+  url: errors/loot-rush-games-problem-types.yml
+- type: Conventions
+  url: conventions/loot-rush-games-conventions.yml
+- type: Conformance
+  url: conformance/loot-rush-games-conformance.yml
+- type: Lifecycle
+  url: lifecycle/loot-rush-games-lifecycle.yml
+- type: StatusPage
+  url: https://status.lootrush.com/
+- type: DataModel
+  url: data-model/loot-rush-games-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DomainSecurity
+  url: security/loot-rush-games-domain-security.yml
+- type: Support
+  url: mailto:support@lootrush.com
+- type: Website
+  url: https://www.lootrush.com/
+- type: GitHubOrganization
+  url: https://github.com/smelthq
