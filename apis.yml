@@ -162,6 +162,8 @@ apis:
   - type: DataModel
     url: data-model/loot-rush-games-data-model.yml
 common:
+- type: Overlay
+  url: overlays/loot-rush-games-partner-overlay.yaml
 - type: DeveloperPortal
   url: https://docs.lootrush.com/
 - type: Documentation
