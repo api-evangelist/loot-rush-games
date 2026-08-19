@@ -1,0 +1,711 @@
+{
+  "item": [
+    {
+      "id": "8851d501-0ede-4730-a8f7-ca5390bf197b",
+      "name": "Withdrawals",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "95b7b307-e6ef-41a0-9098-2ea0994cd8fb",
+          "name": "Create withdrawal",
+          "request": {
+            "name": "Create withdrawal",
+            "description": {
+              "content": "Initiates a cryptocurrency withdrawal for a user. The withdrawal is created as a queued transaction and processed asynchronously.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "crypto",
+                ":userId",
+                "withdraw"
+              ],
+              "host": [
+                "third-party",
+                "lootrush",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) Unique identifier of the user making the withdrawal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<string>\",\n  \"to\": \"<string>\",\n  \"currency\": \"USDT\",\n  \"network\": \"polygon\",\n  \"externalId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f8986569-9c51-44c1-9bb6-5b47a42f221c",
+              "name": "Withdrawal queued.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "crypto",
+                    ":userId",
+                    "withdraw"
+                  ],
+                  "host": [
+                    "third-party",
+                    "lootrush",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) Unique identifier of the user making the withdrawal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"100.50\",\n  \"to\": \"0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb2\",\n  \"currency\": \"USDT\",\n  \"network\": \"polygon\",\n  \"externalId\": \"withdraw-12345\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Withdraw created as queued\",\n  \"data\": {\n    \"bulkId\": \"127bb2e9-3dd5-cf8b-5d67-23bb89b0e426\",\n    \"externalId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74549128-b992-4bf3-965d-867457576e02",
+              "name": "Invalid or missing API token, or user not allowed.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "crypto",
+                    ":userId",
+                    "withdraw"
+                  ],
+                  "host": [
+                    "third-party",
+                    "lootrush",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) Unique identifier of the user making the withdrawal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"100.50\",\n  \"to\": \"0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb2\",\n  \"currency\": \"USDT\",\n  \"network\": \"polygon\",\n  \"externalId\": \"withdraw-12345\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6e920e8-e910-463a-a4a2-55d42c647b6d",
+              "name": "The recipient wallet is blocked from receiving tokens.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "crypto",
+                    ":userId",
+                    "withdraw"
+                  ],
+                  "host": [
+                    "third-party",
+                    "lootrush",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) Unique identifier of the user making the withdrawal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"100.50\",\n  \"to\": \"0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb2\",\n  \"currency\": \"USDT\",\n  \"network\": \"polygon\",\n  \"externalId\": \"withdraw-12345\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6cfca5b-1aff-4f72-a792-4f5079df6980",
+              "name": "User not found, recipient could not be resolved, or wallet not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "crypto",
+                    ":userId",
+                    "withdraw"
+                  ],
+                  "host": [
+                    "third-party",
+                    "lootrush",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) Unique identifier of the user making the withdrawal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"100.50\",\n  \"to\": \"0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb2\",\n  \"currency\": \"USDT\",\n  \"network\": \"polygon\",\n  \"externalId\": \"withdraw-12345\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eead81ae-5038-499a-bdc5-0e64f9f4e73a",
+          "name": "List withdrawals",
+          "request": {
+            "name": "List withdrawals",
+            "description": {
+              "content": "Retrieves a paginated list of withdrawal transactions for a user, with optional filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "crypto",
+                ":userId",
+                "withdraws"
+              ],
+              "host": [
+                "third-party",
+                "lootrush",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (1-indexed)."
+                },
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "20",
+                  "description": "Results per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "bulkId",
+                  "value": "<uuid>",
+                  "description": "Filter by bulk payment ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "transactionHash",
+                  "value": "<string>",
+                  "description": "Filter by blockchain transaction hash."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by withdrawal status."
+                },
+                {
+                  "disabled": false,
+                  "key": "externalId",
+                  "value": "<string>",
+                  "description": "Filter by the external identifier you provided."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) Unique identifier of the user whose withdrawals to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "da046eb9-eba1-4ab3-b74d-c89044c3a807",
+              "name": "A page of withdrawals.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "crypto",
+                    ":userId",
+                    "withdraws"
+                  ],
+                  "host": [
+                    "third-party",
+                    "lootrush",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "20"
+                    },
+                    {
+                      "key": "bulkId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "transactionHash",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "queued"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) Unique identifier of the user whose withdrawals to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"data\": {\n    \"withdraws\": [\n      {\n        \"id\": \"string\",\n        \"bulkId\": \"254e1212-1408-db36-0bfa-b22ab1f48097\",\n        \"status\": \"string\",\n        \"amountToPayToken\": \"string\",\n        \"outCurrencyIsoCode\": \"string\",\n        \"toAddress\": \"string\",\n        \"externalId\": \"string\",\n        \"transactionHash\": \"string\",\n        \"transferTokenStatus\": \"string\",\n        \"errorMessage\": \"string\",\n        \"createdAt\": \"1963-03-12T11:50:47.086Z\",\n        \"updatedAt\": \"1980-06-19T14:30:54.742Z\"\n      },\n      {\n        \"id\": \"string\",\n        \"bulkId\": \"3bd7a345-30a9-f88c-26d9-477ca5379351\",\n        \"status\": \"string\",\n        \"amountToPayToken\": \"string\",\n        \"outCurrencyIsoCode\": \"string\",\n        \"toAddress\": \"string\",\n        \"externalId\": \"string\",\n        \"transactionHash\": \"string\",\n        \"transferTokenStatus\": \"string\",\n        \"errorMessage\": \"string\",\n        \"createdAt\": \"1984-06-11T03:37:57.569Z\",\n        \"updatedAt\": \"1966-06-02T06:39:24.262Z\"\n      }\n    ],\n    \"pageInfo\": {\n      \"limit\": 7009,\n      \"offset\": 7467\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38e74ae7-1419-460c-8b16-79a4b190e4d0",
+              "name": "Invalid or missing API token, or user not allowed.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "crypto",
+                    ":userId",
+                    "withdraws"
+                  ],
+                  "host": [
+                    "third-party",
+                    "lootrush",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "20"
+                    },
+                    {
+                      "key": "bulkId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "transactionHash",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "queued"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) Unique identifier of the user whose withdrawals to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec2f14ea-51fb-48a2-8753-19d6c2e15e3d",
+              "name": "User not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "crypto",
+                    ":userId",
+                    "withdraws"
+                  ],
+                  "host": [
+                    "third-party",
+                    "lootrush",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "20"
+                    },
+                    {
+                      "key": "bulkId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "transactionHash",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "queued"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) Unique identifier of the user whose withdrawals to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://third-party.lootrush.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ffe756d3-579b-4190-b844-ba780d661d99",
+    "name": "LootRush Partner Connect Withdrawals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST endpoints for LootRush partner integrations: crypto withdrawals, transaction history, and OAuth-style user data access.",
+      "type": "text/plain"
+    }
+  }
+}

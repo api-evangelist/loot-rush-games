@@ -4,7 +4,7 @@ status: published
 source: https://docs.lootrush.com/mcp-server
 server:
   name: lootrush
-  transport: http          # Streamable HTTP, JSON-RPC 2.0, stateless (POST only)
+  transport: http
   url: https://mcp.lootrush.com/mcp
   authentication:
     scheme: bearer
@@ -17,9 +17,8 @@ server:
   read_only: true
   scope_note: All tools are read-only and scoped to the authenticated user's own data.
 install:
-  claude_code: >-
-    claude mcp add --transport http lootrush https://mcp.lootrush.com/mcp
-    --header "Authorization: Bearer YOUR_API_KEY"
+  claude_code: 'claude mcp add --transport http lootrush https://mcp.lootrush.com/mcp --header "Authorization:
+    Bearer YOUR_API_KEY"'
   json_config:
     mcpServers:
       lootrush:
@@ -30,17 +29,20 @@ tools:
 - name: getAccountBalance
   description: Returns total USD portfolio value with per-token / per-network breakdown.
 - name: getAccountHistory
-  description: >-
-    Retrieves account transactions (deposits, withdrawals, converts, sends, card
-    operations) by date range or specific transaction ID.
+  description: Retrieves account transactions (deposits, withdrawals, converts, sends, card operations)
+    by date range or specific transaction ID.
 - name: getUserCards
-  description: >-
-    Lists the user's cards across issuers with balances; optionally reveals the
-    encrypted card number and CVV (requires the mcp_card_reveal scope).
+  description: Lists the user's cards across issuers with balances; optionally reveals the encrypted card
+    number and CVV (requires the mcp_card_reveal scope).
 - name: getUserCardTransactions
-  description: >-
-    Fetches card transactions, filterable by card, date range, status, or
-    polarity.
+  description: Fetches card transactions, filterable by card, date range, status, or polarity.
 - name: getCardRevealPublicKey
   description: Returns the public key used to decrypt revealed card secrets.
 source_operation: openapi/loot-rush-games-partner-openapi.json#callMcpTool
+deployment:
+  mode: remote
+  endpoint: https://mcp.lootrush.com/mcp
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census
