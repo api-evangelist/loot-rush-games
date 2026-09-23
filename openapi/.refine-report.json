@@ -1,10 +1,7 @@
 {
   "provider": "loot-rush-games",
   "sources": [
-    "loot-rush-games-connect-api-openapi.yml",
-    "loot-rush-games-history-api-openapi.yml",
-    "loot-rush-games-mcp-api-openapi.yml",
-    "loot-rush-games-withdrawals-api-openapi.yml"
+    "_original/loot-rush-games-partner-openapi.json"
   ],
   "outputs": [
     "loot-rush-games-connect-api-openapi.yml",
@@ -15,6 +12,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "loot-rush-games-partner-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "loot-rush-games-partner-openapi.json: declared missing tag: Connect",
+    "loot-rush-games-partner-openapi.json: declared missing tag: History",
+    "loot-rush-games-partner-openapi.json: declared missing tag: MCP",
+    "loot-rush-games-partner-openapi.json: declared missing tag: Withdrawals",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "loot-rush-games-connect-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loot-rush-games-history-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loot-rush-games-mcp-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loot-rush-games-withdrawals-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

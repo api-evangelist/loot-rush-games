@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: LootRush Partner Connect Withdrawals API
+  title: LootRush Partner Withdrawals API
   description: 'REST endpoints for LootRush partner integrations: crypto withdrawals, transaction history, and OAuth-style user data access.'
   version: 1.0.0
 servers:
