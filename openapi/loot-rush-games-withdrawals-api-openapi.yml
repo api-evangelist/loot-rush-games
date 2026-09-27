@@ -197,6 +197,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 components:
+  responses:
+    Unauthorized:
+      description: Invalid or missing API token, or user not allowed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Withdrawal:
       type: object
@@ -248,13 +255,6 @@ components:
         error:
           type: string
           description: Message describing what went wrong.
-  responses:
-    Unauthorized:
-      description: Invalid or missing API token, or user not allowed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
