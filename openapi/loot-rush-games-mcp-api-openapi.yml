@@ -218,6 +218,41 @@ paths:
                 id: null
 components:
   schemas:
+    McpCall:
+      type: object
+      required:
+      - jsonrpc
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          enum:
+          - '2.0'
+        id:
+          type: integer
+          example: 1
+        method:
+          type: string
+          enum:
+          - tools/call
+        params:
+          type: object
+          required:
+          - name
+          properties:
+            name:
+              type: string
+              enum:
+              - getAccountBalance
+              - getAccountHistory
+              - getUserCards
+              - getUserCardTransactions
+              - getCardRevealPublicKey
+              description: The tool to invoke.
+            arguments:
+              type: object
+              description: Tool arguments (empty for getAccountBalance / getCardRevealPublicKey). getUserCards optionally takes cardId + cardIssuerUserId + includeCardSecrets + sessionId to reveal a card's encrypted PAN/CVV. See the MCP Server guide for each tool's parameters.
     McpResult:
       type: object
       properties:
@@ -265,41 +300,6 @@ components:
             message:
               type: string
               example: Unauthorized
-    McpCall:
-      type: object
-      required:
-      - jsonrpc
-      - method
-      - params
-      properties:
-        jsonrpc:
-          type: string
-          enum:
-          - '2.0'
-        id:
-          type: integer
-          example: 1
-        method:
-          type: string
-          enum:
-          - tools/call
-        params:
-          type: object
-          required:
-          - name
-          properties:
-            name:
-              type: string
-              enum:
-              - getAccountBalance
-              - getAccountHistory
-              - getUserCards
-              - getUserCardTransactions
-              - getCardRevealPublicKey
-              description: The tool to invoke.
-            arguments:
-              type: object
-              description: Tool arguments (empty for getAccountBalance / getCardRevealPublicKey). getUserCards optionally takes cardId + cardIssuerUserId + includeCardSecrets + sessionId to reveal a card's encrypted PAN/CVV. See the MCP Server guide for each tool's parameters.
   securitySchemes:
     bearerAuth:
       type: http
